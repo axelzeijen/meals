@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Should We Eat?</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+
+        const meals = [
+          {
+            name: "Spaghetti Carbonara",
+            ingredients: ["Spaghetti", "Eggs", "Pecorino Romano", "Guanciale or pancetta", "Black pepper"],
+            prep: "Classic Roman pasta with eggs, cheese, and crispy pancetta. Mix hot pasta with egg mixture off heat to create creamy sauce. Ready in 20 minutes."
+          },
+          {
+            name: "Pasta al Pomodoro",
+            ingredients: ["Pasta", "San Marzano tomatoes", "Garlic", "Fresh basil", "Olive oil", "Parmesan"],
+            prep: "Simple tomato sauce made with quality canned tomatoes, garlic, and basil. Simmer 20 minutes, toss with pasta. Perfect weeknight meal."
+          },
+          {
+            name: "Risotto ai Funghi",
+            ingredients: ["Arborio rice", "Mixed mushrooms", "White wine", "Vegetable broth", "Parmesan", "Butter", "Onion"],
+            prep: "Creamy mushroom risotto. Slowly add warm broth while stirring. Takes 25-30 minutes but worth it."
+          },
+          {
+            name: "Pasta Aglio e Olio",
+            ingredients: ["Spaghetti", "Garlic", "Olive oil", "Red pepper flakes", "Parsley", "Parmesan"],
+            prep: "The ultimate simple pasta. Garlic and olive oil sauce with a kick of chili. Ready in 15 minutes when you have nothing in the fridge."
+          },
+          {
+            name: "Penne all'Arrabbiata",
+            ingredients: ["Penne", "Tomato sauce", "Garlic", "Red chili peppers", "Olive oil", "Parsley"],
+            prep: "Spicy tomato pasta (adjust heat for the little one). Quick 20-minute sauce with garlic and chili."
+          },
+          {
+            name: "Gnocchi al Burro e Salvia",
+            ingredients: ["Gnocchi (fresh or shelf-stable)", "Butter", "Fresh sage", "Parmesan"],
+            prep: "Pillowy gnocchi with brown butter and crispy sage. Boil gnocchi, toss in sage butter. Ready in 10 minutes."
+          },
+          {
+            name: "Pasta al Pesto",
+            ingredients: ["Pasta", "Fresh basil", "Pine nuts", "Garlic", "Parmesan", "Olive oil", "Green beans", "Potatoes"],
+            prep: "Classic Genovese pesto. Make fresh or use quality jarred pesto. Traditional version includes green beans and potatoes. 20 minutes."
+          },
+          {
+            name: "Lasagna",
+            ingredients: ["Lasagna sheets", "Bolognese sauce", "Bechamel sauce", "Parmesan", "Mozzarella"],
+            prep: "Weekend project. Layer pasta with meat sauce and bechamel. Can prep ahead and bake when needed. 1 hour total (mostly baking)."
+          },
+          {
+            name: "Pasta alla Norma",
+            ingredients: ["Pasta", "Eggplant", "Tomato sauce", "Ricotta salata", "Basil", "Garlic"],
+            prep: "Sicilian classic with fried eggplant and tomato sauce. Topped with ricotta salata. 30 minutes."
+          },
+          {
+            name: "Risotto alla Milanese",
+            ingredients: ["Arborio rice", "Saffron", "White wine", "Beef or vegetable broth", "Butter", "Parmesan", "Onion"],
+            prep: "Golden saffron risotto. Creamy and elegant. 30 minutes of stirring but simple ingredients."
+          },
+          {
+            name: "Pollo alla Cacciatora",
+            ingredients: ["Chicken pieces", "Tomatoes", "Bell peppers", "Onion", "Mushrooms", "White wine", "Herbs"],
+            prep: "Hunter-style chicken stew. Brown chicken, simmer with vegetables and tomatoes. 45 minutes, mostly hands-off."
+          },
+          {
+            name: "Frittata",
+            ingredients: ["Eggs", "Your choice: zucchini, peppers, onions, potatoes", "Parmesan", "Fresh herbs"],
+            prep: "Italian omelet. Mix eggs with cooked vegetables, cook slowly. Great for using up odds and ends. 20 minutes."
+          },
+          {
+            name: "Pasta e Fagioli",
+            ingredients: ["Small pasta", "Cannellini beans", "Tomatoes", "Pancetta", "Rosemary", "Garlic", "Parmesan rind"],
+            prep: "Hearty pasta and bean dish. More stew than soup. Comforting and filling. 35 minutes."
+          },
+          {
+            name: "Pizza Margherita",
+            ingredients: ["Pizza dough (Coop sells fresh)", "Tomato sauce", "Mozzarella", "Fresh basil", "Olive oil"],
+            prep: "Classic pizza night. Use store-bought dough, top, and bake at max temperature. Fun for the kids to help. 30 minutes."
+          },
+          {
+            name: "Pasta Cacio e Pepe",
+            ingredients: ["Spaghetti or tonnarelli", "Pecorino Romano", "Black pepper", "Pasta water"],
+            prep: "Just cheese and pepper, but technique matters. Creamy sauce from pasta water and cheese. 15 minutes."
+          },
+          {
+            name: "Melanzane alla Parmigiana",
+            ingredients: ["Eggplant", "Tomato sauce", "Mozzarella", "Parmesan", "Basil", "Breadcrumbs"],
+            prep: "Layers of fried eggplant, tomato sauce, and cheese. Can prep ahead. 1 hour including baking."
+          },
+          {
+            name: "Pasta al Forno",
+            ingredients: ["Rigatoni or penne", "Bechamel", "Tomato sauce", "Mozzarella", "Ham or salami", "Parmesan"],
+            prep: "Baked pasta casserole. Mix pasta with sauces and cheese, bake until golden. Great for meal prep. 40 minutes."
+          },
+          {
+            name: "Gnocchi alla Sorrentina",
+            ingredients: ["Gnocchi", "Tomato sauce", "Mozzarella", "Basil", "Parmesan"],
+            prep: "Baked gnocchi with tomato sauce and melted mozzarella. Comfort food at its best. 25 minutes."
+          },
+          {
+            name: "Pasta Primavera",
+            ingredients: ["Pasta", "Seasonal vegetables (zucchini, peas, asparagus)", "Cream or olive oil", "Parmesan", "Garlic"],
+            prep: "Spring vegetable pasta. Light and fresh. Saute veggies, toss with pasta. 25 minutes."
+          },
+          {
+            name: "Polenta with Ragu",
+            ingredients: ["Polenta", "Meat ragu or mushroom ragu", "Parmesan", "Butter"],
+            prep: "Creamy polenta topped with hearty sauce. Polenta takes 30 minutes of stirring but is very comforting."
+          },
+          {
+            name: "Pasta alla Puttanesca",
+            ingredients: ["Spaghetti", "Tomatoes", "Olives", "Capers", "Anchovies", "Garlic", "Red pepper flakes"],
+            prep: "Bold, briny pasta. The anchovies melt into the sauce (even if you don't like them). 20 minutes."
+          },
+          {
+            name: "Risotto con Asparagi",
+            ingredients: ["Arborio rice", "Asparagus", "White wine", "Vegetable broth", "Parmesan", "Butter", "Lemon zest"],
+            prep: "Spring risotto with fresh asparagus. Bright and creamy. 30 minutes."
+          },
+          {
+            name: "Pasta alla Gricia",
+            ingredients: ["Rigatoni", "Guanciale or pancetta", "Pecorino Romano", "Black pepper"],
+            prep: "Like carbonara without eggs. Crispy pork, pecorino, and pasta water make the sauce. 20 minutes."
+          },
+          {
+            name: "Focaccia con Verdure",
+            ingredients: ["Focaccia dough (or make it)", "Cherry tomatoes", "Rosemary", "Olive oil", "Flaky salt"],
+            prep: "Herb-topped flatbread. Use store-bought dough for easy version. Bake with toppings. 30 minutes (or 2 hours if making dough)."
+          },
+          {
+            name: "Pasta e Ceci",
+            ingredients: ["Small pasta", "Chickpeas", "Tomatoes", "Rosemary", "Garlic", "Olive oil", "Parmesan"],
+            prep: "Pasta and chickpea stew. Hearty and protein-rich. Some versions blend half for creaminess. 30 minutes."
+          },
+          {
+            name: "Spaetzle with Cheese",
+            ingredients: ["Spaetzle (fresh from Coop)", "Gruyere or Emmentaler", "Butter", "Onions"],
+            prep: "Swiss-German comfort food. Crispy onions and melted cheese over egg noodles. Quick with store-bought spaetzle. 20 minutes."
+          },
+          {
+            name: "Tortellini in Brodo",
+            ingredients: ["Fresh tortellini", "Good quality broth (chicken or vegetable)", "Parmesan", "Parsley"],
+            prep: "Stuffed pasta in broth. Light but satisfying. Use quality store-bought tortellini and broth. 15 minutes."
+          },
+          {
+            name: "Pasta con Zucchine",
+            ingredients: ["Pasta", "Zucchini", "Garlic", "Mint or basil", "Parmesan", "Olive oil"],
+            prep: "Simple summer pasta. Sauteed zucchini with fresh herbs. Light and quick. 20 minutes."
+          },
+          {
+            name: "Pasta alla Vodka",
+            ingredients: ["Penne", "Tomato sauce", "Heavy cream", "Vodka", "Onion", "Garlic", "Red pepper flakes", "Parmesan"],
+            prep: "Creamy pink sauce with a kick. The vodka enhances tomato flavor. 25 minutes."
+          },
+          {
+            name: "Osso Buco",
+            ingredients: ["Veal shanks", "White wine", "Tomatoes", "Carrots", "Celery", "Onion", "Gremolata (lemon, parsley, garlic)"],
+            prep: "Milanese braised veal shanks. Slow-cooked until fork-tender. Weekend special. 2-3 hours but mostly unattended."
+          },
+          {
+            name: "Pasta with Broccoli",
+            ingredients: ["Orecchiette or other short pasta", "Broccoli", "Garlic", "Anchovies", "Red pepper flakes", "Parmesan"],
+            prep: "Southern Italian classic. Broccoli cooks with pasta, anchovies melt into sauce. 20 minutes."
+          },
+          {
+            name: "Chicken Piccata",
+            ingredients: ["Chicken breast", "Flour", "Lemon", "Capers", "White wine", "Butter", "Parsley"],
+            prep: "Tender chicken in lemony caper sauce. Pound chicken thin, quick pan sauce. Serve with pasta or rice. 25 minutes."
+          },
+          {
+            name: "Risotto al Radicchio",
+            ingredients: ["Arborio rice", "Radicchio", "Red wine", "Vegetable broth", "Parmesan", "Butter", "Onion"],
+            prep: "Veneto specialty. Bitter radicchio mellows in creamy risotto. Beautiful purple color. 30 minutes."
+          },
+          {
+            name: "Pasta alla Boscaiola",
+            ingredients: ["Pasta", "Mushrooms", "Italian sausage", "Cream", "White wine", "Parmesan", "Parsley"],
+            prep: "Woodsman-style pasta with sausage and mushrooms in creamy sauce. Hearty and rich. 30 minutes."
+          },
+          {
+            name: "Parmigiana di Zucchine",
+            ingredients: ["Zucchini", "Tomato sauce", "Mozzarella", "Parmesan", "Basil", "Breadcrumbs"],
+            prep: "Lighter version of eggplant parm. Layer grilled zucchini with sauce and cheese. 45 minutes."
+          },
+          {
+            name: "Pasta alle Vongole",
+            ingredients: ["Spaghetti", "Clams (frozen or canned work)", "White wine", "Garlic", "Parsley", "Red pepper flakes"],
+            prep: "Classic clam pasta. If using canned clams, it's a 15-minute weeknight dinner. Use the clam juice in the sauce."
+          },
+          {
+            name: "Minestrone",
+            ingredients: ["Mixed vegetables (carrots, celery, zucchini, beans)", "Tomatoes", "Pasta or rice", "Parmesan rind", "Herbs"],
+            prep: "Vegetable stew with pasta. Use whatever vegetables you have. Great for cleaning out the fridge. 40 minutes."
+          },
+          {
+            name: "Pasta con Salsiccia",
+            ingredients: ["Pasta", "Italian sausage", "Tomato sauce", "White wine", "Onion", "Fennel seeds", "Parmesan"],
+            prep: "Simple sausage pasta. Break up sausage, simmer in tomato sauce. Comforting and easy. 25 minutes."
+          },
+          {
+            name: "Gnocchi with Gorgonzola",
+            ingredients: ["Gnocchi", "Gorgonzola cheese", "Cream", "Butter", "Walnuts", "Black pepper"],
+            prep: "Creamy blue cheese sauce over pillowy gnocchi. Rich and decadent. Optional walnuts add crunch. 15 minutes."
+          },
+          {
+            name: "Risotto con Zucca",
+            ingredients: ["Arborio rice", "Butternut squash", "White wine", "Vegetable broth", "Parmesan", "Sage", "Butter"],
+            prep: "Autumn pumpkin risotto. Sweet squash with savory rice. Beautiful orange color. 35 minutes."
+          },
+          {
+            name: "Pasta con Ricotta",
+            ingredients: ["Pasta", "Ricotta cheese", "Lemon zest", "Fresh herbs", "Parmesan", "Olive oil", "Peas (optional)"],
+            prep: "Light creamy pasta. Mix hot pasta with ricotta and pasta water. Add peas for color. 15 minutes."
+          },
+          {
+            name: "Saltimbocca alla Romana",
+            ingredients: ["Veal or chicken cutlets", "Prosciutto", "Sage", "White wine", "Butter"],
+            prep: "Roman classic. Thin cutlets topped with prosciutto and sage, pan-fried. 20 minutes."
+          },
+          {
+            name: "Pasta Amatriciana",
+            ingredients: ["Bucatini or spaghetti", "Guanciale or pancetta", "Tomatoes", "Pecorino Romano", "Onion", "Red pepper flakes"],
+            prep: "From the town of Amatrice. Tomato sauce with crispy pork and pecorino. 25 minutes."
+          },
+          {
+            name: "Polpette al Sugo",
+            ingredients: ["Ground meat", "Breadcrumbs", "Egg", "Parmesan", "Herbs", "Tomato sauce"],
+            prep: "Italian meatballs in tomato sauce. Bake or fry, then simmer in sauce. Serve with pasta. 40 minutes."
+          },
+          {
+            name: "Pasta with Roasted Vegetables",
+            ingredients: ["Pasta", "Bell peppers", "Zucchini", "Eggplant", "Cherry tomatoes", "Garlic", "Olive oil", "Feta or ricotta"],
+            prep: "Roast vegetables until caramelized, toss with pasta. Mediterranean vibes. 35 minutes."
+          },
+          {
+            name: "Ribollita",
+            ingredients: ["Stale bread", "Cannellini beans", "Kale or cabbage", "Tomatoes", "Carrots", "Celery", "Onion"],
+            prep: "Tuscan bread and bean stew. Thick and rustic. Great for using old bread. 45 minutes."
+          },
+          {
+            name: "Pasta e Lenticchie",
+            ingredients: ["Small pasta", "Lentils", "Tomatoes", "Celery", "Carrot", "Onion", "Bay leaf"],
+            prep: "Pasta and lentil stew. Protein-rich and filling. Italian comfort food. 40 minutes."
+          },
+          {
+            name: "Pizza Bianca",
+            ingredients: ["Pizza dough", "Mozzarella", "Ricotta", "Garlic", "Rosemary", "Olive oil"],
+            prep: "White pizza without tomato sauce. Creamy and garlicky. Fun to customize toppings. 25 minutes."
+          },
+          {
+            name: "Pasta al Limone",
+            ingredients: ["Spaghetti", "Lemon juice and zest", "Cream or butter", "Parmesan", "Black pepper", "Basil"],
+            prep: "Bright lemony pasta. Creamy and fresh. Perfect for spring and summer. 20 minutes."
+          },
+          {
+            name: "Pollo alla Milanese",
+            ingredients: ["Chicken breast", "Breadcrumbs", "Parmesan", "Eggs", "Lemon", "Arugula"],
+            prep: "Breaded chicken cutlet topped with arugula salad. Light and crispy. 25 minutes."
+          },
+          {
+            name: "Pasta with Tuna",
+            ingredients: ["Pasta", "Canned tuna", "Tomatoes", "Olives", "Capers", "Garlic", "Parsley"],
+            prep: "Pantry pasta. Mediterranean flavors with canned tuna. 20 minutes from pantry to table."
+          },
+          {
+            name: "Ratatouille",
+            ingredients: ["Eggplant", "Zucchini", "Bell peppers", "Tomatoes", "Onion", "Garlic", "Herbs de Provence"],
+            prep: "Provencal vegetable stew. Colorful and healthy. Serve with bread or over polenta. 50 minutes."
+          },
+          {
+            name: "Pasta alla Sorrentina",
+            ingredients: ["Pasta", "Tomato sauce", "Mozzarella", "Basil", "Parmesan"],
+            prep: "From Sorrento. Baked pasta with tomatoes and stretchy mozzarella. 30 minutes."
+          },
+          {
+            name: "Chicken Marsala",
+            ingredients: ["Chicken breast", "Mushrooms", "Marsala wine", "Butter", "Flour", "Chicken broth"],
+            prep: "Sicilian-American classic. Rich mushroom and wine sauce. Serve over pasta or mashed potatoes. 30 minutes."
+          },
+          {
+            name: "Risotto alle Fragole",
+            ingredients: ["Arborio rice", "Strawberries", "White wine", "Vegetable broth", "Butter", "Parmesan", "Mint"],
+            prep: "Surprising sweet-savory risotto. Fresh strawberries add color and sweetness. Spring specialty. 30 minutes."
+          },
+          {
+            name: "Pasta with Spinach and Ricotta",
+            ingredients: ["Pasta", "Spinach", "Ricotta", "Garlic", "Nutmeg", "Parmesan", "Pine nuts"],
+            prep: "Creamy green pasta. Healthy and quick. Like ravioli filling without the work. 20 minutes."
+          },
+          {
+            name: "Pappa al Pomodoro",
+            ingredients: ["Stale bread", "Tomatoes", "Garlic", "Basil", "Olive oil", "Vegetable broth"],
+            prep: "Tuscan tomato bread soup (but thick like porridge). Use old bread. Rustic and delicious. 30 minutes."
+          },
+          {
+            name: "Pasta with Cauliflower",
+            ingredients: ["Pasta", "Cauliflower", "Anchovies", "Garlic", "Raisins", "Pine nuts", "Saffron (optional)"],
+            prep: "Sicilian pasta. Sweet and savory with raisins and pine nuts. Cauliflower gets caramelized. 30 minutes."
+          },
+          {
+            name: "Involtini",
+            ingredients: ["Thin meat cutlets or eggplant", "Breadcrumbs", "Parmesan", "Parsley", "Tomato sauce"],
+            prep: "Stuffed and rolled meat or eggplant. Bake in tomato sauce. Elegant presentation. 45 minutes."
+          },
+          {
+            name: "Pasta alla Caprese",
+            ingredients: ["Pasta", "Cherry tomatoes", "Mozzarella", "Fresh basil", "Garlic", "Olive oil"],
+            prep: "Like caprese salad but warm with pasta. Fresh summer flavors. 20 minutes."
+          },
+          {
+            name: "Stracciatella Soup",
+            ingredients: ["Chicken or vegetable broth", "Eggs", "Parmesan", "Spinach", "Nutmeg", "Lemon"],
+            prep: "Roman egg drop soup. Comforting and light. Whisked eggs create ribbons in hot broth. 15 minutes."
+          },
+          {
+            name: "Pasta con Pancetta e Piselli",
+            ingredients: ["Pasta", "Pancetta", "Peas", "Cream", "Onion", "Parmesan"],
+            prep: "Creamy pasta with crispy pancetta and sweet peas. Kid-friendly. 25 minutes."
+          },
+          {
+            name: "Crespelle",
+            ingredients: ["Crepes", "Ricotta", "Spinach", "Tomato sauce", "Parmesan", "Bechamel"],
+            prep: "Italian savory crepes filled with ricotta and spinach, baked. Like cannelloni but with crepes. 45 minutes."
+          },
+          {
+            name: "Pasta with Artichokes",
+            ingredients: ["Pasta", "Artichoke hearts (jarred)", "Garlic", "Lemon", "White wine", "Parsley", "Parmesan"],
+            prep: "Spring pasta with tender artichokes. Use jarred for convenience. Bright and lemony. 20 minutes."
+          },
+          {
+            name: "Peperonata",
+            ingredients: ["Bell peppers", "Tomatoes", "Onion", "Garlic", "Olive oil", "Vinegar"],
+            prep: "Stewed peppers. Serve on bread, with eggs, or as pasta sauce. Sweet and tangy. 35 minutes."
+          },
+          {
+            name: "Pasta e Patate",
+            ingredients: ["Pasta", "Potatoes", "Pancetta", "Onion", "Celery", "Parmesan rind", "Rosemary"],
+            prep: "Neapolitan pasta with potatoes. Creamy and carb-heavy in the best way. 35 minutes."
+          },
+          {
+            name: "Chicken Cacciatore with Polenta",
+            ingredients: ["Chicken", "Tomatoes", "Bell peppers", "Mushrooms", "Polenta", "Herbs"],
+            prep: "Serve hunter-style chicken over creamy polenta. Hearty one-pot meal. 50 minutes."
+          },
+          {
+            name: "Pasta with Walnut Sauce",
+            ingredients: ["Pasta", "Walnuts", "Garlic", "Cream or milk", "Parmesan", "Parsley"],
+            prep: "Ligurian walnut sauce. Creamy and nutty. Blend walnuts into sauce. 20 minutes."
+          },
+          {
+            name: "Trippa alla Romana",
+            ingredients: ["Tripe (if adventurous)", "Tomato sauce", "Pecorino Romano", "Mint"],
+            prep: "Roman tripe in tomato sauce. Traditional but not for everyone. Skip if squeamish. 2 hours."
+          },
+          {
+            name: "Pasta with Radicchio and Speck",
+            ingredients: ["Pasta", "Radicchio", "Speck or bacon", "Cream", "Parmesan", "Balsamic vinegar"],
+            prep: "Northern Italian. Bitter radicchio, smoky speck, creamy sauce. 25 minutes."
+          },
+          {
+            name: "Farinata",
+            ingredients: ["Chickpea flour", "Water", "Olive oil", "Rosemary", "Salt"],
+            prep: "Ligurian chickpea flatbread. Gluten-free. Bake until crispy edges. 30 minutes (plus resting)."
+          },
+          {
+            name: "Pasta with Burrata",
+            ingredients: ["Pasta", "Cherry tomatoes", "Burrata", "Basil", "Garlic", "Olive oil"],
+            prep: "Creamy burrata melts over hot pasta and tomatoes. Luxurious and simple. 20 minutes."
+          },
+          {
+            name: "Arancini",
+            ingredients: ["Leftover risotto", "Mozzarella", "Breadcrumbs", "Eggs", "Tomato sauce for dipping"],
+            prep: "Sicilian fried rice balls. Great for using leftover risotto. Crispy outside, creamy inside. 30 minutes."
+          },
+          {
+            name: "Pasta alla Trapanese",
+            ingredients: ["Pasta", "Fresh tomatoes", "Almonds", "Basil", "Garlic", "Olive oil", "Pecorino"],
+            prep: "Sicilian pesto-like sauce with raw tomatoes and almonds. No cooking required. Summer dish. 15 minutes."
+          },
+          {
+            name: "Risotto Nero",
+            ingredients: ["Arborio rice", "Squid ink (from Coop)", "Seafood or just squid ink", "White wine", "Fish stock", "Garlic"],
+            prep: "Dramatic black risotto. Squid ink adds briny flavor and color. Special occasion dish. 35 minutes."
+          },
+          {
+            name: "Pasta with Chard",
+            ingredients: ["Pasta", "Swiss chard", "Garlic", "Raisins", "Pine nuts", "Red pepper flakes"],
+            prep: "Sicilian-style greens pasta. Sweet raisins balance bitter chard. 25 minutes."
+          },
+          {
+            name: "Pollo al Limone",
+            ingredients: ["Chicken pieces", "Lemon", "White wine", "Butter", "Capers", "Parsley"],
+            prep: "Italian lemon chicken. Bright and tangy. Serve with rice or potatoes. 35 minutes."
+          },
+          {
+            name: "Pasta alla Norcina",
+            ingredients: ["Pasta", "Italian sausage", "Cream", "Pecorino", "Black pepper", "White wine"],
+            prep: "Umbrian pasta with sausage and truffle (optional). Rich and creamy. 25 minutes."
+          },
+          {
+            name: "Caponata",
+            ingredients: ["Eggplant", "Tomatoes", "Celery", "Olives", "Capers", "Raisins", "Pine nuts", "Vinegar"],
+            prep: "Sicilian sweet and sour eggplant. Serve as side, on bread, or with pasta. Make ahead. 45 minutes."
+          },
+          {
+            name: "Orecchiette with Rapini",
+            ingredients: ["Orecchiette", "Rapini (broccoli rabe)", "Italian sausage", "Garlic", "Red pepper flakes"],
+            prep: "Pugliese classic. Bitter greens with savory sausage. 25 minutes."
+          },
+          {
+            name: "Pasta al Forno con Verdure",
+            ingredients: ["Pasta", "Mixed roasted vegetables", "Bechamel", "Mozzarella", "Parmesan"],
+            prep: "Vegetarian baked pasta. Great for meal prep. 45 minutes."
+          },
+          {
+            name: "Strozzapreti al Ragu",
+            ingredients: ["Strozzapreti or other pasta", "Meat ragu", "Parmesan", "Fresh herbs"],
+            prep: "Priest-strangler pasta with slow-cooked meat sauce. Rich and hearty. 30 minutes (if ragu is premade)."
+          },
+          {
+            name: "Pasta with Cherry Tomatoes and Burrata",
+            ingredients: ["Pasta", "Cherry tomatoes", "Burrata", "Garlic", "Basil", "Olive oil"],
+            prep: "Quick fresh pasta. Tomatoes burst in pan, burrata melts on top. 20 minutes."
+          },
+          {
+            name: "Cotoletta alla Milanese",
+            ingredients: ["Veal or pork cutlet", "Breadcrumbs", "Egg", "Butter", "Lemon"],
+            prep: "Milan's famous breaded cutlet. Thin, crispy, golden. Serve with lemon and arugula. 20 minutes."
+          },
+          {
+            name: "Pasta with Leeks",
+            ingredients: ["Pasta", "Leeks", "Cream", "White wine", "Parmesan", "Thyme"],
+            prep: "Delicate leek sauce. Sweet and creamy. Often underrated. 25 minutes."
+          },
+          {
+            name: "Acquacotta",
+            ingredients: ["Stale bread", "Tomatoes", "Eggs", "Mushrooms", "Onion", "Celery", "Herbs"],
+            prep: "Tuscan cooked water soup. Peasant dish made elegant. Poach eggs in broth. 35 minutes."
+          },
+          {
+            name: "Pasta alla Siracusana",
+            ingredients: ["Pasta", "Eggplant", "Tomatoes", "Olives", "Capers", "Anchovies", "Basil"],
+            prep: "From Syracuse, Sicily. All the Mediterranean flavors. 30 minutes."
+          },
+          {
+            name: "Risotto con Barbabietole",
+            ingredients: ["Arborio rice", "Beets", "Goat cheese", "White wine", "Vegetable broth", "Butter"],
+            prep: "Stunning pink beet risotto. Earthy and creamy with tangy goat cheese. 35 minutes."
+          },
+          {
+            name: "Pasta with Nduja",
+            ingredients: ["Pasta", "Nduja (spicy spreadable salami)", "Tomatoes", "Cream", "Parmesan"],
+            prep: "Calabrian spicy pasta. Nduja melts into sauce. Adjust heat level. 20 minutes."
+          },
+          {
+            name: "Torta Salata",
+            ingredients: ["Puff pastry or shortcrust", "Ricotta", "Vegetables (spinach, zucchini)", "Eggs", "Parmesan"],
+            prep: "Savory Italian tart. Great for lunch or picnic. Customize fillings. 50 minutes."
+          },
+          {
+            name: "Pasta con Alici",
+            ingredients: ["Pasta", "Anchovies", "Breadcrumbs", "Garlic", "Parsley", "Lemon", "Red pepper flakes"],
+            prep: "Southern Italian. Anchovies melt into sauce, crispy breadcrumbs on top. 20 minutes."
+          },
+          {
+            name: "Rosti",
+            ingredients: ["Potatoes", "Butter", "Salt", "Optional: cheese, onions, bacon"],
+            prep: "Swiss potato pancake. Crispy outside, tender inside. Great for brunch or dinner. 30 minutes."
+          },
+          {
+            name: "Pasta with Sausage and Fennel",
+            ingredients: ["Pasta", "Italian sausage", "Fennel bulb", "White wine", "Cream", "Parmesan"],
+            prep: "Sweet fennel pairs perfectly with sausage. Creamy and aromatic. 30 minutes."
+          },
+          {
+            name: "Panzanella",
+            ingredients: ["Stale bread", "Tomatoes", "Cucumber", "Red onion", "Basil", "Olive oil", "Vinegar"],
+            prep: "Tuscan bread salad. Perfect for using old bread. Summery and fresh. 20 minutes."
+          },
+          {
+            name: "Pasta al Pesto Rosso",
+            ingredients: ["Pasta", "Sun-dried tomatoes", "Almonds or pine nuts", "Garlic", "Basil", "Ricotta", "Parmesan"],
+            prep: "Red pesto. Rich and tangy. Sicilian style with almonds. 20 minutes."
+          },
+          {
+            name: "Chicken Spiedini",
+            ingredients: ["Chicken pieces", "Breadcrumbs", "Parmesan", "Lemon", "Herbs", "Olive oil"],
+            prep: "Italian chicken skewers. Breaded and baked or grilled. Kid-friendly. 30 minutes."
+          },
+          {
+            name: "Risotto ai Piselli",
+            ingredients: ["Arborio rice", "Peas", "White wine", "Vegetable broth", "Parmesan", "Mint", "Butter"],
+            prep: "Spring pea risotto. Bright green and fresh. Mint adds unexpected twist. 30 minutes."
+          },
+          {
+            name: "Pasta with Roasted Red Peppers",
+            ingredients: ["Pasta", "Roasted red peppers (jarred)", "Cream", "Garlic", "Basil", "Parmesan"],
+            prep: "Creamy sweet pepper sauce. Use jarred peppers for convenience. 20 minutes."
+          },
+          {
+            name: "Sformato",
+            ingredients: ["Vegetables (cauliflower, broccoli, spinach)", "Eggs", "Bechamel", "Parmesan", "Breadcrumbs"],
+            prep: "Italian vegetable flan. Like a crustless quiche. Elegant side or main. 45 minutes."
+          },
+          {
+            name: "Pasta alla Sorrentina al Forno",
+            ingredients: ["Pasta", "Tomato sauce", "Mozzarella", "Basil", "Parmesan"],
+            prep: "Baked version of classic Sorrentina. Bubbly cheese on top. 35 minutes."
+          },
+          {
+            name: "Ravioli Nudi",
+            ingredients: ["Spinach", "Ricotta", "Eggs", "Flour", "Parmesan", "Butter", "Sage"],
+            prep: "Naked ravioli - just the filling without pasta. Also called gnudi. Lighter than regular ravioli. 30 minutes."
+          },
+          {
+            name: "Pasta with Shrimp and Tomatoes",
+            ingredients: ["Pasta", "Shrimp (frozen okay)", "Cherry tomatoes", "Garlic", "White wine", "Parsley"],
+            prep: "Classic shrimp pasta. Quick and impressive. Frozen shrimp work great. 25 minutes."
+          },
+          {
+            name: "Polenta e Funghi",
+            ingredients: ["Polenta", "Mixed mushrooms", "Garlic", "White wine", "Thyme", "Parmesan"],
+            prep: "Creamy polenta topped with sauteed mushrooms. Earthy and comforting. 35 minutes."
+          },
+          {
+            name: "Pasta with Pistachios",
+            ingredients: ["Pasta", "Pistachios", "Cream or ricotta", "Lemon zest", "Mint", "Parmesan"],
+            prep: "Sicilian-inspired. Blend pistachios into creamy sauce. Elegant and nutty. 20 minutes."
+          },
+          {
+            name: "Frittata di Pasta",
+            ingredients: ["Leftover pasta", "Eggs", "Parmesan", "Mozzarella"],
+            prep: "Italian way to use leftover pasta. Crispy pasta cake. Fun twist on frittata. 20 minutes."
+          },
+          {
+            name: "Pasta alla Carrettiera",
+            ingredients: ["Pasta", "Tuna", "Mushrooms", "Tomatoes", "Garlic", "Parsley", "Red pepper flakes"],
+            prep: "Cart-driver's pasta. Pantry-friendly Sicilian dish. 25 minutes."
+          },
+          {
+            name: "Potato Gnocchi with Tomato Sauce",
+            ingredients: ["Potato gnocchi", "Tomato sauce", "Basil", "Parmesan", "Mozzarella (optional)"],
+            prep: "Classic gnocchi combo. Use store-bought gnocchi for speed. 20 minutes."
+          },
+          {
+            name: "Pasta with Fennel and Sausage",
+            ingredients: ["Pasta", "Fennel", "Italian sausage", "White wine", "Parmesan", "Red pepper flakes"],
+            prep: "Sicilian flavors. Sweet fennel and spicy sausage. 30 minutes."
+          },
+          {
+            name: "Zuppa di Farro",
+            ingredients: ["Farro", "Vegetables (carrots, celery, beans)", "Tomatoes", "Herbs", "Parmesan"],
+            prep: "Tuscan farro soup. Hearty and healthy grain. 45 minutes."
+          },
+          {
+            name: "Pasta with Sun-Dried Tomatoes",
+            ingredients: ["Pasta", "Sun-dried tomatoes", "Cream", "Garlic", "Spinach", "Parmesan"],
+            prep: "Rich and tangy sauce. Sun-dried tomatoes pack flavor punch. 20 minutes."
+          },
+          {
+            name: "Chicken Parmigiana",
+            ingredients: ["Chicken breast", "Breadcrumbs", "Tomato sauce", "Mozzarella", "Parmesan", "Basil"],
+            prep: "Italian-American classic. Breaded chicken baked with sauce and cheese. 40 minutes."
+          },
+          {
+            name: "Pasta e Broccoli",
+            ingredients: ["Pasta", "Broccoli", "Garlic", "Anchovies", "Red pepper flakes", "Breadcrumbs", "Pecorino"],
+            prep: "Simple southern Italian. Broccoli becomes sauce-like. Crunchy breadcrumbs on top. 25 minutes."
+          },
+          {
+            name: "Timballo",
+            ingredients: ["Pasta", "Ragu", "Bechamel", "Peas", "Hard-boiled eggs", "Mozzarella", "Pastry crust"],
+            prep: "Elaborate baked pasta dome. Special occasion dish. Like lasagna in a pie. 90 minutes."
+          },
+          {
+            name: "Pasta with Asparagus and Lemon",
+            ingredients: ["Pasta", "Asparagus", "Lemon", "Cream or butter", "Parmesan", "Mint"],
+            prep: "Spring celebration. Bright and fresh. Quick weeknight dinner. 20 minutes."
+          },
+          {
+            name: "Risotto al Limone",
+            ingredients: ["Arborio rice", "Lemon juice and zest", "White wine", "Vegetable broth", "Butter", "Parmesan"],
+            prep: "Bright citrus risotto. Refreshing and creamy. Perfect for spring. 30 minutes."
+          },
+          {
+            name: "Pasta alla Papalina",
+            ingredients: ["Pasta", "Prosciutto", "Eggs", "Peas", "Cream", "Parmesan"],
+            prep: "Creamy Roman pasta. Like carbonara meets primavera. 25 minutes."
+          },
+          {
+            name: "Cacio e Uova",
+            ingredients: ["Pasta", "Pecorino", "Eggs", "Black pepper", "Guanciale or pancetta"],
+            prep: "Before carbonara became famous. Simple cheese and egg pasta. Roman roots. 20 minutes."
+          },
+          {
+            name: "Pasta con Fave",
+            ingredients: ["Pasta", "Fava beans", "Pecorino", "Pancetta", "Onion", "White wine"],
+            prep: "Roman spring pasta. Fresh fava beans (or frozen). Sweet and savory. 30 minutes."
+          },
+          {
+            name: "Pasta with Gorgonzola and Walnuts",
+            ingredients: ["Pasta", "Gorgonzola", "Walnuts", "Cream", "Pear (optional)", "Honey"],
+            prep: "Northern Italian. Sweet-salty combination. Add pear for fruit element. 20 minutes."
+          },
+          {
+            name: "Piadina",
+            ingredients: ["Flour", "Lard or olive oil", "Baking powder", "Salt", "Fillings: prosciutto, cheese, arugula"],
+            prep: "Romagna flatbread. Quick dough, cook in pan. Fill like a wrap. 30 minutes."
+          },
+          {
+            name: "Pasta with Eggplant and Ricotta Salata",
+            ingredients: ["Pasta", "Eggplant", "Tomatoes", "Ricotta salata", "Basil", "Garlic"],
+            prep: "Catania style. Similar to Norma but different proportions. 30 minutes."
+          },
+          {
+            name: "Corzetti with Pesto",
+            ingredients: ["Corzetti or other pasta", "Pesto", "Pine nuts", "Green beans", "Potatoes"],
+            prep: "Ligurian specialty. Traditional pesto service with vegetables. 25 minutes."
+          }
+        ];
+
+        const phrases = [
+          "Your husband suggests:",
+          "How about:",
+          "The algorithm recommends:",
+          "Tonight's contender:",
+          "What about:",
+          "The kitchen gods decree:",
+          "Dinner inspiration:",
+          "May I suggest:",
+          "Consider this:",
+          "The chef's recommendation:"
+        ];
+
+        const ChefHat = () => (
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+            <line x1="6" y1="17" x2="18" y2="17"/>
+          </svg>
+        );
+
+        const RefreshCw = () => (
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+            <path d="M21 3v5h-5"/>
+            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+            <path d="M8 16H3v5"/>
+          </svg>
+        );
+
+        const ArrowLeft = () => (
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+        );
+
+        function MealSuggestionApp() {
+          const [currentMeal, setCurrentMeal] = useState(null);
+          const [currentPhrase, setCurrentPhrase] = useState('');
+          const [showDetails, setShowDetails] = useState(false);
+
+          const generateSuggestion = () => {
+            const randomMeal = meals[Math.floor(Math.random() * meals.length)];
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            setCurrentMeal(randomMeal);
+            setCurrentPhrase(randomPhrase);
+            setShowDetails(false);
+          };
+
+          const tryAgain = () => {
+            generateSuggestion();
+          };
+
+          const showMoreDetails = () => {
+            setShowDetails(true);
+          };
+
+          const goBack = () => {
+            setShowDetails(false);
+          };
+
+          return (
+            <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 p-4 flex items-center justify-center">
+              <div className="max-w-md w-full">
+                {!currentMeal ? (
+                  <div className="text-center">
+                    <div className="mb-8">
+                      <div className="w-20 h-20 mx-auto text-red-600 mb-4">
+                        <ChefHat />
+                      </div>
+                      <h1 className="text-4xl font-bold text-gray-800 mb-2">
+                        What Should We Eat?
+                      </h1>
+                      <p className="text-gray-600">Press the button and let fate decide</p>
+                    </div>
+                    <button
+                      onClick={generateSuggestion}
+                      className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-8 rounded-2xl text-2xl shadow-lg transform transition hover:scale-105 active:scale-95"
+                    >
+                      What should we eat?
+                    </button>
+                  </div>
+                ) : !showDetails ? (
+                  <div className="bg-white rounded-2xl shadow-xl p-8">
+                    <div className="text-center mb-6">
+                      <p className="text-gray-600 text-lg mb-2">{currentPhrase}</p>
+                      <h2 className="text-3xl font-bold text-gray-800 mb-6">
+                        {currentMeal.name}
+                      </h2>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <button
+                        onClick={tryAgain}
+                        className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 shadow-md transform transition hover:scale-105 active:scale-95"
+                      >
+                        <RefreshCw />
+                        No, try again
+                      </button>
+                      
+                      <button
+                        onClick={showMoreDetails}
+                        className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl shadow-md transform transition hover:scale-105 active:scale-95"
+                      >
+                        Tell me more about this
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-white rounded-2xl shadow-xl p-8">
+                    <button
+                      onClick={goBack}
+                      className="mb-4 text-gray-600 hover:text-gray-800 flex items-center gap-1 transition"
+                    >
+                      <ArrowLeft />
+                      Back
+                    </button>
+                    
+                    <h2 className="text-3xl font-bold text-gray-800 mb-6">
+                      {currentMeal.name}
+                    </h2>
+                    
+                    <div className="mb-6">
+                      <h3 className="text-lg font-semibold text-gray-700 mb-3">Ingredients:</h3>
+                      <ul className="space-y-1">
+                        {currentMeal.ingredients.map((ingredient, index) => (
+                          <li key={index} className="text-gray-600 flex items-start">
+                            <span className="text-red-600 mr-2">•</span>
+                            {ingredient}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <h3 className="text-lg font-semibold text-gray-700 mb-3">Preparation:</h3>
+                      <p className="text-gray-600 leading-relaxed">{currentMeal.prep}</p>
+                    </div>
+                    
+                    <button
+                      onClick={tryAgain}
+                      className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 shadow-md transform transition hover:scale-105 active:scale-95"
+                    >
+                      <RefreshCw />
+                      Actually, no. Try again
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        }
+
+        ReactDOM.render(<MealSuggestionApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>
