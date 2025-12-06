@@ -1,0 +1,2278 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Aptos;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:115%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 56.7pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=DE-CH style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal><span lang=NL>&lt;!DOCTYPE html&gt;</span></p>
+
+<p class=MsoNormal><span lang=NL>&lt;html lang=&quot;en&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&lt;head&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;meta charset=&quot;UTF-8&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;meta name=&quot;viewport&quot;
+content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;title&gt;What Should We
+Eat?&lt;/title&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;script
+src=&quot;https://unpkg.com/react@18/umd/react.production.min.js&quot;&gt;&lt;/script&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;script
+src=&quot;https://unpkg.com/react-dom@18/umd/react-dom.production.min.js&quot;&gt;&lt;/script&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;script
+src=&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;&gt;&lt;/script&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;script
+src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&lt;/head&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&lt;body&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;div
+id=&quot;root&quot;&gt;&lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    </span></p>
+
+<p class=MsoNormal><span lang=EN-US>    &lt;script
+type=&quot;text/babel&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        const { useState } = React;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        </span><span lang=IT>const meals =
+[</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Spaghetti
+Carbonara&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients:
+[&quot;Spaghetti&quot;, &quot;Eggs&quot;, &quot;Pecorino Romano&quot;,
+&quot;Guanciale or pancetta&quot;, &quot;Black pepper&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Classic Roman pasta with eggs, cheese, and crispy pancetta. Mix hot pasta
+with egg mixture off heat to create creamy sauce. </span><span lang=IT>Ready in
+20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta al
+Pomodoro&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;San Marzano tomatoes&quot;, &quot;Garlic&quot;, &quot;Fresh basil&quot;,
+&quot;Olive oil&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Simple tomato sauce made with quality canned tomatoes, garlic, and basil.
+Simmer 20 minutes, toss with pasta. Perfect weeknight meal.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto ai
+Funghi&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Mixed mushrooms&quot;, &quot;White wine&quot;,
+&quot;Vegetable broth&quot;, &quot;Parmesan&quot;, &quot;Butter&quot;,
+&quot;Onion&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy mushroom
+risotto. Slowly add warm broth while stirring. Takes 25-30 minutes but worth
+it.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta Aglio e
+Olio&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Spaghetti&quot;, &quot;Garlic&quot;, &quot;Olive oil&quot;, &quot;Red
+pepper flakes&quot;, &quot;Parsley&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;The ultimate simple
+pasta. Garlic and olive oil sauce with a kick of chili. Ready in 15 minutes
+when you have nothing in the fridge.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          </span><span lang=IT>},</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Penne
+all'Arrabbiata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Penne&quot;,
+&quot;Tomato sauce&quot;, &quot;Garlic&quot;, &quot;Red chili peppers&quot;,
+&quot;Olive oil&quot;, &quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Spicy tomato pasta (adjust heat for the little one). Quick 20-minute
+sauce with garlic and chili.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Gnocchi al Burro e
+Salvia&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Gnocchi
+(fresh or shelf-stable)&quot;, &quot;Butter&quot;, &quot;Fresh sage&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Pillowy gnocchi
+with brown butter and crispy sage. Boil gnocchi, toss in sage butter. Ready in
+10 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta al
+Pesto&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Fresh basil&quot;, &quot;Pine nuts&quot;,
+&quot;Garlic&quot;, &quot;Parmesan&quot;, &quot;Olive oil&quot;, &quot;Green
+beans&quot;, &quot;Potatoes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Classic Genovese
+pesto. Make fresh or use quality jarred pesto. Traditional version includes
+green beans and potatoes. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Lasagna&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>ingredients:
+[&quot;Lasagna sheets&quot;, &quot;Bolognese sauce&quot;, &quot;Béchamel
+sauce&quot;, &quot;Parmesan&quot;, &quot;Mozzarella&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Weekend project. Layer pasta with meat sauce and béchamel. Can prep ahead
+and bake when needed. 1 hour total (mostly baking).&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          </span><span lang=IT>},</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta alla
+Norma&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;Eggplant&quot;, &quot;Tomato sauce&quot;, &quot;Ricotta salata&quot;,
+&quot;Basil&quot;, &quot;Garlic&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Sicilian classic with fried eggplant and tomato sauce. Topped with
+ricotta salata. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto alla
+Milanese&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Saffron&quot;, &quot;White wine&quot;, &quot;Beef or
+vegetable broth&quot;, &quot;Butter&quot;, &quot;Parmesan&quot;,
+&quot;Onion&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Golden saffron
+risotto. Creamy and elegant. 30 minutes of stirring but simple
+ingredients.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pollo alla
+Cacciatora&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken
+pieces&quot;, &quot;Tomatoes&quot;, &quot;Bell peppers&quot;,
+&quot;Onion&quot;, &quot;Mushrooms&quot;, &quot;White wine&quot;,
+&quot;Herbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Hunter-style
+chicken stew. Brown chicken, simmer with vegetables and tomatoes. 45 minutes,
+mostly hands-off.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Frittata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Eggs&quot;,
+&quot;Your choice: zucchini, peppers, onions, potatoes&quot;,
+&quot;Parmesan&quot;, &quot;Fresh herbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Italian omelet. Mix
+eggs with cooked vegetables, cook slowly. Great for using up odds and ends. 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta e
+Fagioli&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Small
+pasta&quot;, &quot;Cannellini beans&quot;, &quot;Tomatoes&quot;,
+&quot;Pancetta&quot;, &quot;Rosemary&quot;, &quot;Garlic&quot;, &quot;Parmesan
+rind&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Hearty pasta and
+bean dish. More stew than soup. Comforting and filling. 35 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pizza
+Margherita&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Pizza dough
+(Coop sells fresh)&quot;, &quot;Tomato sauce&quot;, &quot;Mozzarella&quot;,
+&quot;Fresh basil&quot;, &quot;Olive oil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Classic pizza
+night. Use store-bought dough, top, and bake at max temperature. Fun for the
+kids to help. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta Cacio e
+Pepe&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>ingredients:
+[&quot;Spaghetti or tonnarelli&quot;, &quot;Pecorino Romano&quot;, &quot;Black
+pepper&quot;, &quot;Pasta water&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Just cheese and pepper, but technique matters. Creamy sauce from pasta
+water and cheese. 15 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Melanzane alla
+Parmigiana&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>ingredients:
+[&quot;Eggplant&quot;, &quot;Tomato sauce&quot;, &quot;Mozzarella&quot;,
+&quot;Parmesan&quot;, &quot;Basil&quot;, &quot;Breadcrumbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Layers of fried eggplant, tomato sauce, and cheese. Can prep ahead. 1
+hour including baking.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta al
+Forno&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>ingredients:
+[&quot;Rigatoni or penne&quot;, &quot;Béchamel&quot;, &quot;Tomato sauce&quot;,
+&quot;Mozzarella&quot;, &quot;Ham or salami&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Baked pasta casserole. Mix pasta with sauces and cheese, bake until
+golden. </span><span lang=IT>Great for meal prep. 40 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Gnocchi alla
+Sorrentina&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Gnocchi&quot;,
+&quot;Tomato sauce&quot;, &quot;Mozzarella&quot;, &quot;Basil&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Baked gnocchi with tomato sauce and melted mozzarella. Comfort food at
+its best. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta
+Primavera&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Seasonal vegetables (zucchini, peas,
+asparagus)&quot;, &quot;Cream or olive oil&quot;, &quot;Parmesan&quot;,
+&quot;Garlic&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Spring vegetable
+pasta. Light and fresh. Sauté veggies, toss with pasta. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Polenta with
+Ragu&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Polenta&quot;, &quot;Meat ragu or mushroom ragu&quot;,
+&quot;Parmesan&quot;, &quot;Butter&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy polenta
+topped with hearty sauce. Polenta takes 30 minutes of stirring but is very
+comforting.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alla
+Puttanesca&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Spaghetti&quot;, &quot;Tomatoes&quot;, &quot;Olives&quot;,
+&quot;Capers&quot;, &quot;Anchovies&quot;, &quot;Garlic&quot;, &quot;Red pepper
+flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Bold, briny pasta.
+The anchovies melt into the sauce (even if you don't like them). 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto con
+Asparagi&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Asparagus&quot;, &quot;White wine&quot;, &quot;Vegetable
+broth&quot;, &quot;Parmesan&quot;, &quot;Butter&quot;, &quot;Lemon zest&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Spring risotto with
+fresh asparagus. Bright and creamy. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alla
+Gricia&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>ingredients:
+[&quot;Rigatoni&quot;, &quot;Guanciale or pancetta&quot;, &quot;Pecorino
+Romano&quot;, &quot;Black pepper&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Like carbonara without eggs. Crispy pork, pecorino, and pasta water make
+the sauce. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Focaccia con
+Verdure&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Focaccia
+dough (or make it)&quot;, &quot;Cherry tomatoes&quot;, &quot;Rosemary&quot;,
+&quot;Olive oil&quot;, &quot;Flaky salt&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Herb-topped
+flatbread. Use store-bought dough for easy version. Bake with toppings. 30
+minutes (or 2 hours if making dough).&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta e Ceci&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Small
+pasta&quot;, &quot;Chickpeas&quot;, &quot;Tomatoes&quot;, &quot;Rosemary&quot;,
+&quot;Garlic&quot;, &quot;Olive oil&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Pasta and chickpea
+stew. Hearty and protein-rich. Some versions blend half for creaminess. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Spätzle with
+Cheese&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Spätzle
+(fresh from Coop)&quot;, &quot;Gruyère or Emmentaler&quot;, &quot;Butter&quot;,
+&quot;Onions&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Swiss-German
+comfort food. Crispy onions and melted cheese over egg noodles. Quick with
+store-bought spätzle. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Tortellini in
+Brodo&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Fresh
+tortellini&quot;, &quot;Good quality broth (chicken or vegetable)&quot;,
+&quot;Parmesan&quot;, &quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Stuffed pasta in
+broth. Light but satisfying. Use quality store-bought tortellini and broth. 15
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta con
+Zucchine&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Zucchini&quot;, &quot;Garlic&quot;, &quot;Mint or
+basil&quot;, &quot;Parmesan&quot;, &quot;Olive oil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Simple summer
+pasta. Sautéed zucchini with fresh herbs. Light and quick. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alla
+Vodka&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Penne&quot;, &quot;Tomato sauce&quot;, &quot;Heavy cream&quot;,
+&quot;Vodka&quot;, &quot;Onion&quot;, &quot;Garlic&quot;, &quot;Red pepper
+flakes&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy pink sauce
+with a kick. The vodka enhances tomato flavor. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Osso Buco&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Veal
+shanks&quot;, &quot;White wine&quot;, &quot;Tomatoes&quot;,
+&quot;Carrots&quot;, &quot;Celery&quot;, &quot;Onion&quot;, &quot;Gremolata
+(lemon, parsley, garlic)&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Milanese braised
+veal shanks. Slow-cooked until fork-tender. Weekend special. 2-3 hours but
+mostly unattended.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Broccoli&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Orecchiette
+or other short pasta&quot;, &quot;Broccoli&quot;, &quot;Garlic&quot;,
+&quot;Anchovies&quot;, &quot;Red pepper flakes&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Southern Italian
+classic. Broccoli cooks with pasta, anchovies melt into sauce. 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Chicken
+Piccata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken
+breast&quot;, &quot;Flour&quot;, &quot;Lemon&quot;, &quot;Capers&quot;,
+&quot;White wine&quot;, &quot;Butter&quot;, &quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Tender chicken in
+lemony caper sauce. Pound chicken thin, quick pan sauce. Serve with pasta or
+rice. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto al
+Radicchio&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Radicchio&quot;, &quot;Red wine&quot;, &quot;Vegetable
+broth&quot;, &quot;Parmesan&quot;, &quot;Butter&quot;, &quot;Onion&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>prep:
+&quot;Veneto specialty. Bitter radicchio mellows in creamy risotto. </span>Beautiful
+purple color. 30 minutes.&quot;</p>
+
+<p class=MsoNormal>          },</p>
+
+<p class=MsoNormal>          {</p>
+
+<p class=MsoNormal>            name: &quot;Pasta alla Boscaiola&quot;,</p>
+
+<p class=MsoNormal>            <span lang=EN-US>ingredients:
+[&quot;Pasta&quot;, &quot;Mushrooms&quot;, &quot;Italian sausage&quot;,
+&quot;Cream&quot;, &quot;White wine&quot;, &quot;Parmesan&quot;,
+&quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Woodsman-style
+pasta with sausage and mushrooms in creamy sauce. Hearty and rich. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Parmigiana di
+Zucchine&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Zucchini&quot;, &quot;Tomato sauce&quot;, &quot;Mozzarella&quot;,
+&quot;Parmesan&quot;, &quot;Basil&quot;, &quot;Breadcrumbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Lighter version of
+eggplant parm. Layer grilled zucchini with sauce and cheese. 45 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alle
+Vongole&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Spaghetti&quot;, &quot;Clams (frozen or canned work)&quot;, &quot;White
+wine&quot;, &quot;Garlic&quot;, &quot;Parsley&quot;, &quot;Red pepper
+flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Classic clam pasta.
+If using canned clams, it's a 15-minute weeknight dinner. Use the clam juice in
+the sauce.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Minestrone&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Mixed
+vegetables (carrots, celery, zucchini, beans)&quot;, &quot;Tomatoes&quot;,
+&quot;Pasta or rice&quot;, &quot;Parmesan rind&quot;, &quot;Herbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Vegetable stew with
+pasta. Use whatever vegetables you have. Great for cleaning out the fridge. 40
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta con
+Salsiccia&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Italian sausage&quot;, &quot;Tomato sauce&quot;,
+&quot;White wine&quot;, &quot;Onion&quot;, &quot;Fennel seeds&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Simple sausage
+pasta. Break up sausage, simmer in tomato sauce. Comforting and easy. 25
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Gnocchi with
+Gorgonzola&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Gnocchi&quot;, &quot;Gorgonzola cheese&quot;, &quot;Cream&quot;,
+&quot;Butter&quot;, &quot;Walnuts&quot;, &quot;Black pepper&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy blue cheese
+sauce over pillowy gnocchi. Rich and decadent. Optional walnuts add crunch. 15
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto con
+Zucca&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Butternut squash&quot;, &quot;White wine&quot;,
+&quot;Vegetable broth&quot;, &quot;Parmesan&quot;, &quot;Sage&quot;,
+&quot;Butter&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Autumn pumpkin
+risotto. Sweet squash with savory rice. Beautiful orange color. 35
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta con
+Ricotta&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Ricotta cheese&quot;, &quot;Lemon zest&quot;,
+&quot;Fresh herbs&quot;, &quot;Parmesan&quot;, &quot;Olive oil&quot;,
+&quot;Peas (optional)&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Light creamy pasta.
+Mix hot pasta with ricotta and pasta water. Add peas for color. 15
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Saltimbocca alla
+Romana&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Veal or
+chicken cutlets&quot;, &quot;Prosciutto&quot;, &quot;Sage&quot;, &quot;White
+wine&quot;, &quot;Butter&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Roman classic. Thin
+cutlets topped with prosciutto and sage, pan-fried. </span><span lang=IT>20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta
+Amatriciana&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Bucatini or
+spaghetti&quot;, &quot;Guanciale or pancetta&quot;, &quot;Tomatoes&quot;,
+&quot;Pecorino Romano&quot;, &quot;Onion&quot;, &quot;Red pepper flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;From the town of Amatrice. Tomato sauce with crispy pork and pecorino. 25
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Polpette al
+Sugo&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Ground
+meat&quot;, &quot;Breadcrumbs&quot;, &quot;Egg&quot;, &quot;Parmesan&quot;,
+&quot;Herbs&quot;, &quot;Tomato sauce&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Italian meatballs
+in tomato sauce. Bake or fry, then simmer in sauce. Serve with pasta. 40
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Roasted
+Vegetables&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Bell peppers&quot;, &quot;Zucchini&quot;,
+&quot;Eggplant&quot;, &quot;Cherry tomatoes&quot;, &quot;Garlic&quot;,
+&quot;Olive oil&quot;, &quot;Feta or ricotta&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Roast vegetables
+until caramelized, toss with pasta. Mediterranean vibes. 35 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Ribollita&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Stale
+bread&quot;, &quot;Cannellini beans&quot;, &quot;Kale or cabbage&quot;,
+&quot;Tomatoes&quot;, &quot;Carrots&quot;, &quot;Celery&quot;,
+&quot;Onion&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Tuscan bread and
+bean stew. Thick and rustic. Great for using old bread. 45 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta e
+Lenticchie&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Small
+pasta&quot;, &quot;Lentils&quot;, &quot;Tomatoes&quot;, &quot;Celery&quot;,
+&quot;Carrot&quot;, &quot;Onion&quot;, &quot;Bay leaf&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Pasta and lentil
+stew. Protein-rich and filling. Italian comfort food. </span><span lang=IT>40
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pizza Bianca&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pizza
+dough&quot;, &quot;Mozzarella&quot;, &quot;Ricotta&quot;, &quot;Garlic&quot;,
+&quot;Rosemary&quot;, &quot;Olive oil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;White pizza without tomato sauce. Creamy and garlicky. Fun to customize
+toppings. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta al
+Limone&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Spaghetti&quot;, &quot;Lemon juice and zest&quot;, &quot;Cream or
+butter&quot;, &quot;Parmesan&quot;, &quot;Black pepper&quot;,
+&quot;Basil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Bright lemony
+pasta. Creamy and fresh. Perfect for spring and summer. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pollo alla
+Milanese&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken
+breast&quot;, &quot;Breadcrumbs&quot;, &quot;Parmesan&quot;, &quot;Eggs&quot;,
+&quot;Lemon&quot;, &quot;Arugula&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Breaded chicken
+cutlet topped with arugula salad. Light and crispy. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Tuna&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Canned tuna&quot;, &quot;Tomatoes&quot;,
+&quot;Olives&quot;, &quot;Capers&quot;, &quot;Garlic&quot;,
+&quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Pantry pasta.
+Mediterranean flavors with canned tuna. 20 minutes from pantry to table.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Ratatouille&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Eggplant&quot;, &quot;Zucchini&quot;, &quot;Bell peppers&quot;,
+&quot;Tomatoes&quot;, &quot;Onion&quot;, &quot;Garlic&quot;, &quot;Herbs de
+Provence&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Provençal vegetable
+stew. Colorful and healthy. </span><span lang=IT>Serve with bread or over
+polenta. 50 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta alla
+Sorrentina&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;Tomato sauce&quot;, &quot;Mozzarella&quot;, &quot;Basil&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;From Sorrento. Baked pasta with tomatoes and stretchy mozzarella. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Chicken
+Marsala&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken
+breast&quot;, &quot;Mushrooms&quot;, &quot;Marsala wine&quot;,
+&quot;Butter&quot;, &quot;Flour&quot;, &quot;Chicken broth&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian-American
+classic. Rich mushroom and wine sauce. Serve over pasta or mashed potatoes. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto alle
+Fragole&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Strawberries&quot;, &quot;White wine&quot;, &quot;Vegetable
+broth&quot;, &quot;Butter&quot;, &quot;Parmesan&quot;, &quot;Mint&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Surprising
+sweet-savory risotto. Fresh strawberries add color and sweetness. Spring
+specialty. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Spinach
+and Ricotta&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Spinach&quot;, &quot;Ricotta&quot;,
+&quot;Garlic&quot;, &quot;Nutmeg&quot;, &quot;Parmesan&quot;, &quot;Pine
+nuts&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy green pasta.
+Healthy and quick. Like ravioli filling without the work. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pappa al
+Pomodoro&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Stale
+bread&quot;, &quot;Tomatoes&quot;, &quot;Garlic&quot;, &quot;Basil&quot;,
+&quot;Olive oil&quot;, &quot;Vegetable broth&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Tuscan tomato bread
+soup (but thick like porridge). Use old bread. Rustic and delicious. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Cauliflower&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Cauliflower&quot;, &quot;Anchovies&quot;,
+&quot;Garlic&quot;, &quot;Raisins&quot;, &quot;Pine nuts&quot;, &quot;Saffron
+(optional)&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian pasta.
+Sweet and savory with raisins and pine nuts. Cauliflower gets caramelized. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Involtini&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Thin meat
+cutlets or eggplant&quot;, &quot;Breadcrumbs&quot;, &quot;Parmesan&quot;,
+&quot;Parsley&quot;, &quot;Tomato sauce&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Stuffed and rolled
+meat or eggplant. </span><span lang=IT>Bake in tomato sauce. Elegant
+presentation. 45 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta alla
+Caprese&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;Cherry tomatoes&quot;, &quot;Mozzarella&quot;, &quot;Fresh basil&quot;,
+&quot;Garlic&quot;, &quot;Olive oil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Like caprese salad but warm with pasta. Fresh summer flavors. 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Stracciatella
+Soup&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken or
+vegetable broth&quot;, &quot;Eggs&quot;, &quot;Parmesan&quot;,
+&quot;Spinach&quot;, &quot;Nutmeg&quot;, &quot;Lemon&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Roman egg drop
+soup. Comforting and light. Whisked eggs create ribbons in hot broth. </span><span
+lang=IT>15 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta con Pancetta e
+Piselli&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;Pancetta&quot;, &quot;Peas&quot;, &quot;Cream&quot;, &quot;Onion&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Creamy pasta with crispy pancetta and sweet peas. Kid-friendly. 25
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Crespelle&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Crepes&quot;, &quot;Ricotta&quot;, &quot;Spinach&quot;, &quot;Tomato
+sauce&quot;, &quot;Parmesan&quot;, &quot;Béchamel&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Italian savory
+crepes filled with ricotta and spinach, baked. Like cannelloni but with crepes.
+45 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Artichokes&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Artichoke hearts (jarred)&quot;, &quot;Garlic&quot;,
+&quot;Lemon&quot;, &quot;White wine&quot;, &quot;Parsley&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Spring pasta with
+tender artichokes. Use jarred for convenience. Bright and lemony. 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Peperonata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Bell
+peppers&quot;, &quot;Tomatoes&quot;, &quot;Onion&quot;, &quot;Garlic&quot;,
+&quot;Olive oil&quot;, &quot;Vinegar&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Stewed peppers.
+Serve on bread, with eggs, or as pasta sauce. Sweet and tangy. 35
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta e
+Patate&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Potatoes&quot;, &quot;Pancetta&quot;,
+&quot;Onion&quot;, &quot;Celery&quot;, &quot;Parmesan rind&quot;,
+&quot;Rosemary&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Neapolitan pasta
+with potatoes. Creamy and carb-heavy in the best way. 35 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Chicken Cacciatore
+with Polenta&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Chicken&quot;, &quot;Tomatoes&quot;, &quot;Bell peppers&quot;,
+&quot;Mushrooms&quot;, &quot;Polenta&quot;, &quot;Herbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Serve hunter-style
+chicken over creamy polenta. Hearty one-pot meal. 50 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Walnut
+Sauce&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Walnuts&quot;, &quot;Garlic&quot;, &quot;Cream or
+milk&quot;, &quot;Parmesan&quot;, &quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Ligurian walnut
+sauce. Creamy and nutty. Blend walnuts into sauce. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          </span><span lang=IT>},</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Trippa alla
+Romana&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Tripe (if
+adventurous)&quot;, &quot;Tomato sauce&quot;, &quot;Pecorino Romano&quot;,
+&quot;Mint&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Roman tripe in tomato sauce. Traditional but not for everyone. Skip if
+squeamish. 2 hours.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Radicchio and Speck&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>ingredients:
+[&quot;Pasta&quot;, &quot;Radicchio&quot;, &quot;Speck or bacon&quot;,
+&quot;Cream&quot;, &quot;Parmesan&quot;, &quot;Balsamic vinegar&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Northern Italian. Bitter radicchio, smoky speck, creamy sauce. 25
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Farinata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chickpea
+flour&quot;, &quot;Water&quot;, &quot;Olive oil&quot;, &quot;Rosemary&quot;,
+&quot;Salt&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Ligurian chickpea
+flatbread. Gluten-free. Bake until crispy edges. 30 minutes (plus
+resting).&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Burrata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Cherry tomatoes&quot;, &quot;Burrata&quot;,
+&quot;Basil&quot;, &quot;Garlic&quot;, &quot;Olive oil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy burrata
+melts over hot pasta and tomatoes. Luxurious and simple. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Arancini&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Leftover
+risotto&quot;, &quot;Mozzarella&quot;, &quot;Breadcrumbs&quot;,
+&quot;Eggs&quot;, &quot;Tomato sauce for dipping&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian fried rice
+balls. Great for using leftover risotto. Crispy outside, creamy inside. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alla
+Trapanese&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Fresh tomatoes&quot;, &quot;Almonds&quot;,
+&quot;Basil&quot;, &quot;Garlic&quot;, &quot;Olive oil&quot;,
+&quot;Pecorino&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian pesto-like
+sauce with raw tomatoes and almonds. No cooking required. Summer dish. 15
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto Nero&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Squid ink (from Coop)&quot;, &quot;Seafood or just squid
+ink&quot;, &quot;White wine&quot;, &quot;Fish stock&quot;, &quot;Garlic&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Dramatic black
+risotto. Squid ink adds briny flavor and color. Special occasion dish. 35
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Chard&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Swiss chard&quot;, &quot;Garlic&quot;,
+&quot;Raisins&quot;, &quot;Pine nuts&quot;, &quot;Red pepper flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian-style
+greens pasta. Sweet raisins balance bitter chard. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pollo al
+Limone&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken
+pieces&quot;, &quot;Lemon&quot;, &quot;White wine&quot;, &quot;Butter&quot;,
+&quot;Capers&quot;, &quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Italian lemon
+chicken. Bright and tangy. Serve with rice or potatoes. 35 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alla
+Norcina&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Italian sausage&quot;, &quot;Cream&quot;,
+&quot;Pecorino&quot;, &quot;Black pepper&quot;, &quot;White wine&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Umbrian pasta with
+sausage and truffle (optional). Rich and creamy. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Caponata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Eggplant&quot;, &quot;Tomatoes&quot;, &quot;Celery&quot;,
+&quot;Olives&quot;, &quot;Capers&quot;, &quot;Raisins&quot;, &quot;Pine
+nuts&quot;, &quot;Vinegar&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian sweet and
+sour eggplant. Serve as side, on bread, or with pasta. Make ahead. 45
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Orecchiette with
+Rapini&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Orecchiette&quot;, &quot;Rapini (broccoli rabe)&quot;, &quot;Italian
+sausage&quot;, &quot;Garlic&quot;, &quot;Red pepper flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Pugliese classic.
+Bitter greens with savory sausage. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta al Forno con
+Verdure&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Mixed roasted vegetables&quot;, &quot;Béchamel&quot;,
+&quot;Mozzarella&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Vegetarian baked
+pasta. Great for meal prep. 45 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Strozzapreti al
+Ragù&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Strozzapreti or other pasta&quot;, &quot;Meat ragù&quot;,
+&quot;Parmesan&quot;, &quot;Fresh herbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Priest-strangler
+pasta with slow-cooked meat sauce. Rich and hearty. 30 minutes (if ragù is
+premade).&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Cherry
+Tomatoes and Burrata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Cherry tomatoes&quot;, &quot;Burrata&quot;,
+&quot;Garlic&quot;, &quot;Basil&quot;, &quot;Olive oil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Quick fresh pasta.
+Tomatoes burst in pan, burrata melts on top. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Cotoletta alla
+Milanese&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Veal or
+pork cutlet&quot;, &quot;Breadcrumbs&quot;, &quot;Egg&quot;,
+&quot;Butter&quot;, &quot;Lemon&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Milan's famous
+breaded cutlet. Thin, crispy, golden. Serve with lemon and arugula. 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Leeks&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Leeks&quot;, &quot;Cream&quot;, &quot;White
+wine&quot;, &quot;Parmesan&quot;, &quot;Thyme&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Delicate leek
+sauce. Sweet and creamy. Often underrated. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Acquacotta&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Stale
+bread&quot;, &quot;Tomatoes&quot;, &quot;Eggs&quot;, &quot;Mushrooms&quot;,
+&quot;Onion&quot;, &quot;Celery&quot;, &quot;Herbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Tuscan cooked water
+soup. Peasant dish made elegant. Poach eggs in broth. 35 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alla
+Siracusana&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Eggplant&quot;, &quot;Tomatoes&quot;,
+&quot;Olives&quot;, &quot;Capers&quot;, &quot;Anchovies&quot;,
+&quot;Basil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;From Syracuse,
+Sicily. All the Mediterranean flavors. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto con
+Barbabietole&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Beets&quot;, &quot;Goat cheese&quot;, &quot;White wine&quot;,
+&quot;Vegetable broth&quot;, &quot;Butter&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Stunning pink beet
+risotto. Earthy and creamy with tangy goat cheese. 35 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Nduja&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Nduja (spicy spreadable salami)&quot;,
+&quot;Tomatoes&quot;, &quot;Cream&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Calabrian spicy
+pasta. Nduja melts into sauce. Adjust heat level. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Torta Salata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Puff pastry
+or shortcrust&quot;, &quot;Ricotta&quot;, &quot;Vegetables (spinach,
+zucchini)&quot;, &quot;Eggs&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Savory Italian
+tart. Great for lunch or picnic. Customize fillings. 50 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta con
+Alici&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Anchovies&quot;, &quot;Breadcrumbs&quot;,
+&quot;Garlic&quot;, &quot;Parsley&quot;, &quot;Lemon&quot;, &quot;Red pepper
+flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Southern Italian.
+Anchovies melt into sauce, crispy breadcrumbs on top. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Rösti&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Potatoes&quot;, &quot;Butter&quot;, &quot;Salt&quot;, &quot;Optional:
+cheese, onions, bacon&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Swiss potato
+pancake. Crispy outside, tender inside. Great for brunch or dinner. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Sausage
+and Fennel&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Italian sausage&quot;, &quot;Fennel bulb&quot;,
+&quot;White wine&quot;, &quot;Cream&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sweet fennel pairs
+perfectly with sausage. Creamy and aromatic. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Panzanella&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Stale
+bread&quot;, &quot;Tomatoes&quot;, &quot;Cucumber&quot;, &quot;Red onion&quot;,
+&quot;Basil&quot;, &quot;Olive oil&quot;, &quot;Vinegar&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Tuscan bread salad.
+Perfect for using old bread. Summery and fresh. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta al Pesto
+Rosso&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Sun-dried tomatoes&quot;, &quot;Almonds or pine
+nuts&quot;, &quot;Garlic&quot;, &quot;Basil&quot;, &quot;Ricotta&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Red pesto. Rich and
+tangy. Sicilian style with almonds. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Chicken
+Spiedini&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken
+pieces&quot;, &quot;Breadcrumbs&quot;, &quot;Parmesan&quot;, &quot;Lemon&quot;,
+&quot;Herbs&quot;, &quot;Olive oil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Italian chicken
+skewers. Breaded and baked or grilled. Kid-friendly. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto ai
+Piselli&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Peas&quot;, &quot;White wine&quot;, &quot;Vegetable
+broth&quot;, &quot;Parmesan&quot;, &quot;Mint&quot;, &quot;Butter&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Spring pea risotto.
+Bright green and fresh. Mint adds unexpected twist. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Roasted
+Red Peppers&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Roasted red peppers (jarred)&quot;,
+&quot;Cream&quot;, &quot;Garlic&quot;, &quot;Basil&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy sweet pepper
+sauce. Use jarred peppers for convenience. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Sformato&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Vegetables
+(cauliflower, broccoli, spinach)&quot;, &quot;Eggs&quot;, &quot;Béchamel&quot;,
+&quot;Parmesan&quot;, &quot;Breadcrumbs&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Italian vegetable
+flan. Like a crustless quiche. </span><span lang=IT>Elegant side or main. 45
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta alla Sorrentina
+al Forno&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;Tomato sauce&quot;, &quot;Mozzarella&quot;, &quot;Basil&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Baked version of classic Sorrentina. Bubbly cheese on top. 35
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          </span><span lang=IT>},</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Ravioli Nudi&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Spinach&quot;,
+&quot;Ricotta&quot;, &quot;Eggs&quot;, &quot;Flour&quot;, &quot;Parmesan&quot;,
+&quot;Butter&quot;, &quot;Sage&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Naked ravioli - just the filling without pasta. Also called gnudi.
+Lighter than regular ravioli. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Shrimp
+and Tomatoes&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Shrimp (frozen okay)&quot;, &quot;Cherry
+tomatoes&quot;, &quot;Garlic&quot;, &quot;White wine&quot;,
+&quot;Parsley&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Classic shrimp
+pasta. Quick and impressive. Frozen shrimp work great. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Polenta e
+Funghi&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Polenta&quot;, &quot;Mixed mushrooms&quot;, &quot;Garlic&quot;,
+&quot;White wine&quot;, &quot;Thyme&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Creamy polenta
+topped with sautéed mushrooms. Earthy and comforting. 35 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Pistachios&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Pistachios&quot;, &quot;Cream or ricotta&quot;,
+&quot;Lemon zest&quot;, &quot;Mint&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian-inspired.
+Blend pistachios into creamy sauce. </span><span lang=IT>Elegant and nutty. 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Frittata di
+Pasta&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Leftover
+pasta&quot;, &quot;Eggs&quot;, &quot;Parmesan&quot;, &quot;Mozzarella&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Italian way to use leftover pasta. Crispy pasta cake. Fun twist on
+frittata. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta alla
+Carrettiera&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Tuna&quot;, &quot;Mushrooms&quot;,
+&quot;Tomatoes&quot;, &quot;Garlic&quot;, &quot;Parsley&quot;, &quot;Red pepper
+flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Cart-driver's
+pasta. Pantry-friendly Sicilian dish. </span><span lang=IT>25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Potato Gnocchi with
+Tomato Sauce&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Potato
+gnocchi&quot;, &quot;Tomato sauce&quot;, &quot;Basil&quot;,
+&quot;Parmesan&quot;, &quot;Mozzarella (optional)&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Classic gnocchi combo. Use store-bought gnocchi for speed. 20
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Fennel
+and Sausage&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Fennel&quot;, &quot;Italian sausage&quot;,
+&quot;White wine&quot;, &quot;Parmesan&quot;, &quot;Red pepper flakes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Sicilian flavors.
+Sweet fennel and spicy sausage. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Zuppa di
+Farro&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Farro&quot;, &quot;Vegetables (carrots, celery, beans)&quot;,
+&quot;Tomatoes&quot;, &quot;Herbs&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Tuscan farro soup.
+Hearty and healthy grain. 45 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Sun-Dried Tomatoes&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Sun-dried tomatoes&quot;, &quot;Cream&quot;,
+&quot;Garlic&quot;, &quot;Spinach&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Rich and tangy
+sauce. Sun-dried tomatoes pack flavor punch. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Chicken
+Parmigiana&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Chicken
+breast&quot;, &quot;Breadcrumbs&quot;, &quot;Tomato sauce&quot;,
+&quot;Mozzarella&quot;, &quot;Parmesan&quot;, &quot;Basil&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Italian-American
+classic. Breaded chicken baked with sauce and cheese. 40 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta e
+Broccoli&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Broccoli&quot;, &quot;Garlic&quot;,
+&quot;Anchovies&quot;, &quot;Red pepper flakes&quot;, &quot;Breadcrumbs&quot;,
+&quot;Pecorino&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Simple southern
+Italian. Broccoli becomes sauce-like. Crunchy breadcrumbs on top. 25
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Timballo&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Ragù&quot;, &quot;Béchamel&quot;, &quot;Peas&quot;,
+&quot;Hard-boiled eggs&quot;, &quot;Mozzarella&quot;, &quot;Pastry
+crust&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Elaborate baked
+pasta dome. Special occasion dish. Like lasagna in a pie. 90 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Asparagus and Lemon&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Asparagus&quot;, &quot;Lemon&quot;, &quot;Cream or
+butter&quot;, &quot;Parmesan&quot;, &quot;Mint&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Spring celebration.
+Bright and fresh. Quick weeknight dinner. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Risotto al
+Limone&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Arborio
+rice&quot;, &quot;Lemon juice and zest&quot;, &quot;White wine&quot;,
+&quot;Vegetable broth&quot;, &quot;Butter&quot;, &quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Bright citrus
+risotto. Refreshing and creamy. </span><span lang=IT>Perfect for spring. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Pasta alla
+Papalina&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;Prosciutto&quot;, &quot;Eggs&quot;, &quot;Peas&quot;, &quot;Cream&quot;,
+&quot;Parmesan&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Creamy Roman pasta. Like carbonara meets primavera. </span><span lang=IT>25
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=IT>          },</span></p>
+
+<p class=MsoNormal><span lang=IT>          {</span></p>
+
+<p class=MsoNormal><span lang=IT>            name: &quot;Cacio e Uova&quot;,</span></p>
+
+<p class=MsoNormal><span lang=IT>            ingredients: [&quot;Pasta&quot;,
+&quot;Pecorino&quot;, &quot;Eggs&quot;, &quot;Black pepper&quot;,
+&quot;Guanciale or pancetta&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Before carbonara became famous. Simple cheese and egg pasta. Roman roots.
+20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta con
+Fave&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Fava beans&quot;, &quot;Pecorino&quot;,
+&quot;Pancetta&quot;, &quot;Onion&quot;, &quot;White wine&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Roman spring pasta.
+Fresh fava beans (or frozen). Sweet and savory. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with
+Gorgonzola and Walnuts&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Pasta&quot;, &quot;Gorgonzola&quot;, &quot;Walnuts&quot;,
+&quot;Cream&quot;, &quot;Pear (optional)&quot;, &quot;Honey&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Northern Italian.
+Sweet-salty combination. Add pear for fruit element. 20 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Piadina&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients:
+[&quot;Flour&quot;, &quot;Lard or olive oil&quot;, &quot;Baking powder&quot;,
+&quot;Salt&quot;, &quot;Fillings: prosciutto, cheese, arugula&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Romagna flatbread.
+Quick dough, cook in pan. Fill like a wrap. 30 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Pasta with Eggplant
+and Ricotta Salata&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=IT>ingredients:
+[&quot;Pasta&quot;, &quot;Eggplant&quot;, &quot;Tomatoes&quot;, &quot;Ricotta
+salata&quot;, &quot;Basil&quot;, &quot;Garlic&quot;],</span></p>
+
+<p class=MsoNormal><span lang=IT>            </span><span lang=EN-US>prep:
+&quot;Catania style. Similar to Norma but different proportions. 30
+minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          },</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            name: &quot;Corzetti with
+Pesto&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            ingredients: [&quot;Corzetti or
+other pasta&quot;, &quot;Pesto&quot;, &quot;Pine nuts&quot;, &quot;Green
+beans&quot;, &quot;Potatoes&quot;],</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            prep: &quot;Ligurian specialty.
+Traditional pesto service with vegetables. 25 minutes.&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          }</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        ];</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        const phrases = [</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;Your husband
+suggests:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;How about:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;The algorithm
+recommends:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;Tonight's contender:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;What about:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;The kitchen gods
+decree:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;Dinner inspiration:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;May I suggest:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;Consider this:&quot;,</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &quot;The chef's
+recommendation:&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        ];</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        // Lucide React icons as inline SVG</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        const ChefHat = () =&gt; (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &lt;svg
+xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;80&quot;
+height=&quot;80&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;
+stroke=&quot;currentColor&quot; strokeWidth=&quot;2&quot;
+strokeLinecap=&quot;round&quot; strokeLinejoin=&quot;round&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            &lt;path d=&quot;M6 13.87A4 4 0
+0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4
+4 0 0 1 18 13.87V21H6Z&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=ES>&lt;line
+x1=&quot;6&quot; y1=&quot;17&quot; x2=&quot;18&quot; y2=&quot;17&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=ES>          &lt;/svg&gt;</span></p>
+
+<p class=MsoNormal><span lang=ES>        </span><span lang=EN-US>);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        const RefreshCw = () =&gt; (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &lt;svg
+xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;20&quot;
+height=&quot;20&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;
+stroke=&quot;currentColor&quot; strokeWidth=&quot;2&quot;
+strokeLinecap=&quot;round&quot; strokeLinejoin=&quot;round&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            &lt;path d=&quot;M3 12a9 9 0 0
+1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            &lt;path d=&quot;M21
+3v5h-5&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            &lt;path d=&quot;M21 12a9 9 0 0
+1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            &lt;path d=&quot;M8
+16H3v5&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &lt;/svg&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        );</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        const ArrowLeft = () =&gt; (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          &lt;svg
+xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;16&quot;
+height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot;
+stroke=&quot;currentColor&quot; strokeWidth=&quot;2&quot;
+strokeLinecap=&quot;round&quot; strokeLinejoin=&quot;round&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            </span><span lang=FR-CH>&lt;line
+x1=&quot;19&quot; y1=&quot;12&quot; x2=&quot;5&quot; y2=&quot;12&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=FR-CH>            &lt;polyline points=&quot;12 19
+5 12 12 5&quot;/&gt;</span></p>
+
+<p class=MsoNormal><span lang=FR-CH>          </span><span lang=EN-US>&lt;/svg&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        );</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        function MealSuggestionApp() {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          const [currentMeal,
+setCurrentMeal] = useState(null);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          const [currentPhrase,
+setCurrentPhrase] = useState('');</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          const [showDetails,
+setShowDetails] = useState(false);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          const generateSuggestion = ()
+=&gt; {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            const randomMeal =
+meals[Math.floor(Math.random() * meals.length)];</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            const randomPhrase =
+phrases[Math.floor(Math.random() * phrases.length)];</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            setCurrentMeal(randomMeal);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            setCurrentPhrase(randomPhrase);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            setShowDetails(false);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          };</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          const tryAgain = () =&gt; {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            generateSuggestion();</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          };</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          const showMoreDetails = () =&gt;
+{</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            setShowDetails(true);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          };</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          const goBack = () =&gt; {</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            setShowDetails(false);</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          };</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          return (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            &lt;div
+className=&quot;min-h-screen bg-gradient-to-br from-orange-50 to-red-50 p-4
+flex items-center justify-center&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>              &lt;div
+className=&quot;max-w-md w-full&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                {!currentMeal ? (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                  &lt;div
+className=&quot;text-center&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;div
+className=&quot;mb-8&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;div
+className=&quot;w-20 h-20 mx-auto text-red-600 mb-4&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                        &lt;ChefHat /&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;h1
+className=&quot;text-4xl font-bold text-gray-800 mb-2&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                        What Should We Eat?</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;/h1&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;p
+className=&quot;text-gray-600&quot;&gt;Press the button and let fate
+decide&lt;/p&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;button</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                     
+onClick={generateSuggestion}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                     
+className=&quot;w-full bg-red-600 hover:bg-red-700 text-white font-bold py-6
+px-8 rounded-2xl text-2xl shadow-lg transform transition hover:scale-105
+active:scale-95&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      What should we eat?</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/button&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                  &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                ) : !showDetails ? (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                  &lt;div
+className=&quot;bg-white rounded-2xl shadow-xl p-8&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;div
+className=&quot;text-center mb-6&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;p
+className=&quot;text-gray-600 text-lg mb-2&quot;&gt;{currentPhrase}&lt;/p&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;h2
+className=&quot;text-3xl font-bold text-gray-800 mb-6&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                        {currentMeal.name}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;/h2&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    </span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;div
+className=&quot;space-y-3&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;button</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                        onClick={tryAgain}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                       
+className=&quot;w-full bg-red-600 hover:bg-red-700 text-white font-semibold
+py-4 px-6 rounded-xl flex items-center justify-center gap-2 shadow-md transform
+transition hover:scale-105 active:scale-95&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                        &lt;RefreshCw /&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                        No, try again</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;/button&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      </span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;button</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                       
+onClick={showMoreDetails}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                       
+className=&quot;w-full bg-green-600 hover:bg-green-700 text-white font-semibold
+py-4 px-6 rounded-xl shadow-md transform transition hover:scale-105
+active:scale-95&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                        Tell me more about
+this</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;/button&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                  &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                ) : (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                  &lt;div
+className=&quot;bg-white rounded-2xl shadow-xl p-8&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;button</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      onClick={goBack}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      className=&quot;mb-4
+text-gray-600 hover:text-gray-800 flex items-center gap-1 transition&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;ArrowLeft /&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      Back</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/button&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    </span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;h2
+className=&quot;text-3xl font-bold text-gray-800 mb-6&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      {currentMeal.name}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/h2&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    </span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;div
+className=&quot;mb-6&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;h3
+className=&quot;text-lg font-semibold text-gray-700
+mb-3&quot;&gt;Ingredients:&lt;/h3&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;ul
+className=&quot;space-y-1&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                       
+{currentMeal.ingredients.map((ingredient, index) =&gt; (</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                          &lt;li
+key={index} className=&quot;text-gray-600 flex items-start&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                            &lt;span
+className=&quot;text-red-600 mr-2&quot;&gt;•&lt;/span&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                            </span><span
+lang=IT>{ingredient}</span></p>
+
+<p class=MsoNormal><span lang=IT>                          &lt;/li&gt;</span></p>
+
+<p class=MsoNormal><span lang=IT>                        ))}</span></p>
+
+<p class=MsoNormal><span lang=IT>                      &lt;/ul&gt;</span></p>
+
+<p class=MsoNormal><span lang=IT>                    &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=IT>                    </span></p>
+
+<p class=MsoNormal><span lang=IT>                    &lt;div
+className=&quot;mb-6&quot;&gt;</span></p>
+
+<p class=MsoNormal><span lang=IT>                      </span><span lang=EN-US>&lt;h3
+className=&quot;text-lg font-semibold text-gray-700
+mb-3&quot;&gt;Preparation:&lt;/h3&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;p
+className=&quot;text-gray-600
+leading-relaxed&quot;&gt;{currentMeal.prep}&lt;/p&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    </span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;button</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      onClick={tryAgain}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                     
+className=&quot;w-full bg-red-600 hover:bg-red-700 text-white font-semibold
+py-4 px-6 rounded-xl flex items-center justify-center gap-2 shadow-md transform
+transition hover:scale-105 active:scale-95&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      &lt;RefreshCw /&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                      Actually, no. Try
+again</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                    &lt;/button&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                  &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>                )}</span></p>
+
+<p class=MsoNormal><span lang=EN-US>              &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>            &lt;/div&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>          );</span></p>
+
+<p class=MsoNormal><span lang=EN-US>        }</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>       
+ReactDOM.render(&lt;MealSuggestionApp /&gt;, document.getElementById('root'));</span></p>
+
+<p class=MsoNormal><span lang=EN-US>    </span>&lt;/script&gt;</p>
+
+<p class=MsoNormal>&lt;/body&gt;</p>
+
+<p class=MsoNormal>&lt;/html&gt;</p>
+
+</div>
+
+</body>
+
+</html>
